@@ -53,8 +53,8 @@ func Copy(src, dst string) error {
 	}
 	defer dstFile.Close()
 
-	if _, err := io.Copy(dstFile, srcFile); err != nil {
-		return fmt.Errorf("failed copy file: %v", err)
+	if n, err := io.Copy(dstFile, srcFile); err != nil {
+		return fmt.Errorf("failed copy file: written: %d, %v", n, err)
 	}
 
 	dstFile.Sync()
