@@ -7,3 +7,4 @@ Go common utilities
   - [x] copy timestamp (Access Time and Modified Time)
   - [x] copy file with auto create directory
   - [x] move file with preserve permission and timestamp
+  - [x] stat time (current support: linux, windows, darwin)  

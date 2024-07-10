@@ -5,7 +5,6 @@ import (
 	"io"
 	"os"
 	"path/filepath"
-	"time"
 )
 
 // CopyPerm copies the file permission from source file to destination file
@@ -24,14 +23,12 @@ func CopyPerm(src, dst string) error {
 // CopyTimestamp copies access and modification time of source file 
 // to destination file.
 func CopyTimestamp(src, dst string) error {
-	// when stat or access a file the atime will be updated
-	// so the atime can use the current time
-	atime := time.Now()
-	fs, err := os.Stat(src)
+	fi, err := os.Stat(src)
 	if err != nil {
 		return fmt.Errorf("failed to stat src file %s: %v", src, err)
 	}
-	if err := os.Chtimes(dst, atime, fs.ModTime()); err != nil {
+	fileTime := StatTime(fi)
+	if err := os.Chtimes(dst, fileTime.AccessTime, fi.ModTime()); err != nil {
 		return fmt.Errorf("failed to change access and modify time: %v", err)
 	}
 	return nil
