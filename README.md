@@ -9,4 +9,4 @@ Go common utilities
   - [x] move file with preserve permission and timestamp
   - [x] stat time (current support: linux, windows, darwin)
 - [x] Error Detection
-  - [x] LRC (Longitudinal Redundancy Check)
+  - [x] LRC (Longitudinal Redundancy Check): BCC and LRC ISO 1155
