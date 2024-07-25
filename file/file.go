@@ -79,11 +79,12 @@ func Move(src, dst string) error {
     return nil
 }
 
-// mkdir make path directories if not exists with permission 0755
+// mkdir make path directories if not exists with permission 0777
+// respect umask
 func mkdir(path string) error {
 	dir := filepath.Dir(path)
 	if _, err := os.Stat(dir); os.IsNotExist(err) {
-		return os.MkdirAll(dir, 0755)
+		return os.MkdirAll(dir, 0777)
 	}
 	return nil
 }
