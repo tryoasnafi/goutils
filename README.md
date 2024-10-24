@@ -12,3 +12,5 @@ Go common utilities
   - [x] LRC (Longitudinal Redundancy Check): BCC and LRC ISO 1155
 - [x] Online
   - [x] check online/offline status
+- [x] Retry
+  - [x] Exec function with max retries
